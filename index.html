@@ -219,13 +219,35 @@
     </main>
     <footer class="site-footer">
       <div class="container">
-        <p>Не является официальным государственным сервисом.</p>
-        <p class="site-footer__name">Справка для Иностранцев</p>
-        <p>+7(123)456-78-90</p>
-        <p>г Москва ул Пушкина д 19</p>
+        <div class="site-footer__grid">
+          <div>
+            <a class="site-footer__brand" href="index.html">
+              <img class="site-footer__logo" src="images/logo.png" width="48" height="48" alt="" />
+              <span>Справка для Иностранцев</span>
+            </a>
+            <p class="site-footer__description">
+              Помогаем разобраться в документах для жизни, работы и учёбы в России.
+            </p>
+          </div>
+          <div>
+            <h2 class="site-footer__title">Контакты</h2>
+            <p>+7(123)456-78-90</p>
+            <p>г Москва ул Пушкина д 19</p>
+            <p><a href="index.html#appointment">Запись на приём</a></p>
+          </div>
+          <div>
+            <h2 class="site-footer__title">Разработчик</h2>
+            <p>Мищенко Данила Михайлович</p>
+          </div>
+        </div>
+        <div class="site-footer__bottom">
+          <p>Не является официальным государственным сервисом.</p>
+        </div>
       </div>
     </footer>
-    <a class="back-to-top btn btn-primary" href="#top">Наверх</a>
+    <a class="back-to-top" href="#top" aria-label="Вернуться наверх" title="Наверх" hidden>
+      <span aria-hidden="true">↑</span>
+    </a>
     <dialog class="help-dialog" id="help-dialog" aria-labelledby="help-title">
       <h2 id="help-title">Как пользоваться справочником</h2>
       <p>

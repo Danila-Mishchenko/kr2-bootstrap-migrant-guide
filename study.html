@@ -47,45 +47,104 @@
       </div>
     </header>
     <main id="main" tabindex="-1">
-      <section class="container section section-hero">
-        <div class="row align-items-center g-4">
-          <div class="col-lg-7">
-            <p class="breadcrumbs">
-              <a href="index.html">Главная</a>
-              / Учёба
-            </p>
-            <h1>Учёба в России</h1>
-            <p class="hero__text">Поступление, РВПО и подтверждение обучения.</p>
-            <p>
-              Выберите свою ситуацию. На странице анкеты можно ответить на вопросы и получить
-              предварительный список документов.
+      <section class="container study-intro">
+        <p class="breadcrumbs">
+          <a href="index.html">Главная</a>
+          / Учёба
+        </p>
+        <div class="study-intro__grid">
+          <div>
+            <p class="page-label">Для иностранных студентов</p>
+            <h1>Ваш путь к учёбе в России</h1>
+            <p class="hero__text">
+              От поступления до подтверждения обучения: выберите нужный этап.
             </p>
           </div>
-          <div class="col-lg-5">
-            <img
-              class="section-hero__image"
-              src="images/study.png"
-              alt="Иностранные студенты с документами в библиотеке"
-              width="520"
-              height="350"
-            />
-          </div>
+          <img
+            src="images/study.png"
+            alt="Иностранные студенты в университетской библиотеке"
+            width="600"
+            height="400"
+          />
         </div>
       </section>
-      <section class="container section" aria-labelledby="cards-title">
-        <h2 id="cards-title">Выберите ситуацию</h2>
-        <div class="row g-3" id="cards-study"></div>
-        <noscript><p>Для отображения карточек включите JavaScript.</p></noscript>
+      <section class="container section" aria-label="Этапы подготовки к учёбе">
+        <ol class="study-timeline">
+          <li class="study-step">
+            <p class="study-step__number">Этап 1</p>
+            <h2>Поступление</h2>
+            <p>
+              Уточните уровень обучения, страну выдачи документа об образовании и способ
+              поступления.
+            </p>
+            <a
+              class="btn btn-outline-primary"
+              href="questionnaire.html?card=admission"
+              data-questionnaire
+            >
+              Посмотреть документы
+            </a>
+          </li>
+          <li class="study-step">
+            <p class="study-step__number">Этап 2</p>
+            <h2>Проживание во время учёбы</h2>
+            <p>
+              Проверьте образовательный маршрут РВПО с учётом формы, программы и учебной
+              организации.
+            </p>
+            <a
+              class="btn btn-outline-primary"
+              href="questionnaire.html?card=rvpo"
+              data-questionnaire
+            >
+              Посмотреть документы
+            </a>
+          </li>
+          <li class="study-step">
+            <p class="study-step__number">Этап 3</p>
+            <h2>Подтверждение обучения</h2>
+            <p>Выберите, кому и для какой цели требуется документ из учебного заведения.</p>
+            <a
+              class="btn btn-outline-primary"
+              href="questionnaire.html?card=study-proof"
+              data-questionnaire
+            >
+              Посмотреть документы
+            </a>
+          </li>
+        </ol>
       </section>
     </main>
     <footer class="site-footer">
       <div class="container">
-        <p>Не является официальным государственным сервисом.</p>
-        <p class="site-footer__name">Справка для Иностранцев</p>
-        <p>+7(123)456-78-90</p>
-        <p>г Москва ул Пушкина д 19</p>
+        <div class="site-footer__grid">
+          <div>
+            <a class="site-footer__brand" href="index.html">
+              <img class="site-footer__logo" src="images/logo.png" width="48" height="48" alt="" />
+              <span>Справка для Иностранцев</span>
+            </a>
+            <p class="site-footer__description">
+              Помогаем разобраться в документах для жизни, работы и учёбы в России.
+            </p>
+          </div>
+          <div>
+            <h2 class="site-footer__title">Контакты</h2>
+            <p>+7(123)456-78-90</p>
+            <p>г Москва ул Пушкина д 19</p>
+            <p><a href="index.html#appointment">Запись на приём</a></p>
+          </div>
+          <div>
+            <h2 class="site-footer__title">Разработчик</h2>
+            <p>Мищенко Данила Михайлович</p>
+          </div>
+        </div>
+        <div class="site-footer__bottom">
+          <p>Не является официальным государственным сервисом.</p>
+        </div>
       </div>
     </footer>
-    <a class="back-to-top btn btn-primary" href="#top">Наверх</a>
+    <a class="back-to-top" href="#top" aria-label="Вернуться наверх" title="Наверх" hidden>
+      <span aria-hidden="true">↑</span>
+    </a>
   </body>
 </html>

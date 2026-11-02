@@ -45,45 +45,181 @@
       </div>
     </header>
     <main id="main" tabindex="-1">
-      <section class="container section section-hero">
-        <div class="row align-items-center g-4">
-          <div class="col-lg-7">
-            <p class="breadcrumbs">
-              <a href="index.html">Главная</a>
-              / Проживание
-            </p>
-            <h1>Проживание в России</h1>
-            <p class="hero__text">Пребывание, РВП, ВНЖ и ежегодное уведомление.</p>
-            <p>
-              Выберите свою ситуацию. На странице анкеты можно ответить на вопросы и получить
-              предварительный список документов.
-            </p>
-          </div>
-          <div class="col-lg-5">
+      <section class="container page-intro">
+        <p class="breadcrumbs">
+          <a href="index.html">Главная</a>
+          / Проживание
+        </p>
+        <h1>Проживание в России</h1>
+        <p class="hero__text">Выберите документ или задачу в меню справочника.</p>
+      </section>
+      <section class="container section residence-layout" aria-label="Справочник по проживанию">
+        <nav class="residence-menu" aria-label="Темы проживания">
+          <button
+            class="residence-menu__button"
+            type="button"
+            data-topic="stay"
+            aria-controls="topic-stay"
+            aria-pressed="true"
+          >
+            Пребывание
+          </button>
+          <button
+            class="residence-menu__button"
+            type="button"
+            data-topic="rvp"
+            aria-controls="topic-rvp"
+            aria-pressed="false"
+          >
+            РВП
+          </button>
+          <button
+            class="residence-menu__button"
+            type="button"
+            data-topic="vnzh"
+            aria-controls="topic-vnzh"
+            aria-pressed="false"
+          >
+            ВНЖ
+          </button>
+          <button
+            class="residence-menu__button"
+            type="button"
+            data-topic="vnzh-annual"
+            aria-controls="topic-vnzh-annual"
+            aria-pressed="false"
+          >
+            Ежегодное уведомление
+          </button>
+        </nav>
+        <div class="residence-content">
+          <article class="residence-panel" id="topic-stay" aria-labelledby="topic-title-stay">
+            <div class="residence-panel__text">
+              <p class="page-label">Справочник по проживанию</p>
+              <h2 id="topic-title-stay">Временное пребывание</h2>
+              <p>
+                Если вы находитесь в России без РВП или ВНЖ, начните с уточнения своего статуса и
+                цели пребывания. Анкета поможет собрать исходный перечень по вашей ситуации.
+              </p>
+              <a class="btn btn-primary" href="questionnaire.html?card=stay" data-questionnaire>
+                Перейти к анкете
+              </a>
+            </div>
             <img
-              class="section-hero__image section-hero__image--document"
+              class="residence-panel__photo"
               src="images/residence.jpg"
               alt="Обложка вида на жительство иностранного гражданина"
-              width="520"
-              height="350"
+              width="480"
+              height="640"
             />
-          </div>
+          </article>
+          <article class="residence-panel" id="topic-rvp" aria-labelledby="topic-title-rvp" hidden>
+            <div class="residence-panel__text">
+              <p class="page-label">Справочник по проживанию</p>
+              <h2 id="topic-title-rvp">Разрешение на временное проживание</h2>
+              <p>
+                РВП связано с конкретным основанием обращения. Выберите предполагаемое основание и
+                укажите, для кого оформляются документы, чтобы получить предварительный список.
+              </p>
+              <a class="btn btn-primary" href="questionnaire.html?card=rvp" data-questionnaire>
+                Перейти к анкете
+              </a>
+            </div>
+            <img
+              class="residence-panel__photo"
+              src="images/residence.jpg"
+              alt="Обложка вида на жительство иностранного гражданина"
+              width="480"
+              height="640"
+            />
+          </article>
+          <article
+            class="residence-panel"
+            id="topic-vnzh"
+            aria-labelledby="topic-title-vnzh"
+            hidden
+          >
+            <div class="residence-panel__text">
+              <p class="page-label">Справочник по проживанию</p>
+              <h2 id="topic-title-vnzh">Вид на жительство</h2>
+              <p>
+                Для получения вида на жительство важны действующий статус и основание обращения. В
+                анкете можно выбрать общий порядок, семейное или образовательное основание.
+              </p>
+              <a class="btn btn-primary" href="questionnaire.html?card=vnzh" data-questionnaire>
+                Перейти к анкете
+              </a>
+            </div>
+            <img
+              class="residence-panel__photo"
+              src="images/residence.jpg"
+              alt="Обложка вида на жительство иностранного гражданина"
+              width="480"
+              height="640"
+            />
+          </article>
+          <article
+            class="residence-panel"
+            id="topic-vnzh-annual"
+            aria-labelledby="topic-title-vnzh-annual"
+            hidden
+          >
+            <div class="residence-panel__text">
+              <p class="page-label">Справочник по проживанию</p>
+              <h2 id="topic-title-vnzh-annual">Ежегодное уведомление по ВНЖ</h2>
+              <p>
+                Этот раздел предназначен для обладателей ВНЖ. Анкета учитывает, за кого подаётся
+                уведомление, источник средств, выезды и очередной пятый год проживания.
+              </p>
+              <a
+                class="btn btn-primary"
+                href="questionnaire.html?card=vnzh-annual"
+                data-questionnaire
+              >
+                Перейти к анкете
+              </a>
+            </div>
+            <img
+              class="residence-panel__photo"
+              src="images/residence.jpg"
+              alt="Обложка вида на жительство иностранного гражданина"
+              width="480"
+              height="640"
+            />
+          </article>
         </div>
-      </section>
-      <section class="container section" aria-labelledby="cards-title">
-        <h2 id="cards-title">Выберите ситуацию</h2>
-        <div class="row g-3" id="cards-residence"></div>
-        <noscript><p>Для отображения карточек включите JavaScript.</p></noscript>
       </section>
     </main>
     <footer class="site-footer">
       <div class="container">
-        <p>Не является официальным государственным сервисом.</p>
-        <p class="site-footer__name">Справка для Иностранцев</p>
-        <p>+7(123)456-78-90</p>
-        <p>г Москва ул Пушкина д 19</p>
+        <div class="site-footer__grid">
+          <div>
+            <a class="site-footer__brand" href="index.html">
+              <img class="site-footer__logo" src="images/logo.png" width="48" height="48" alt="" />
+              <span>Справка для Иностранцев</span>
+            </a>
+            <p class="site-footer__description">
+              Помогаем разобраться в документах для жизни, работы и учёбы в России.
+            </p>
+          </div>
+          <div>
+            <h2 class="site-footer__title">Контакты</h2>
+            <p>+7(123)456-78-90</p>
+            <p>г Москва ул Пушкина д 19</p>
+            <p><a href="index.html#appointment">Запись на приём</a></p>
+          </div>
+          <div>
+            <h2 class="site-footer__title">Разработчик</h2>
+            <p>Мищенко Данила Михайлович</p>
+          </div>
+        </div>
+        <div class="site-footer__bottom">
+          <p>Не является официальным государственным сервисом.</p>
+        </div>
       </div>
     </footer>
-    <a class="back-to-top btn btn-primary" href="#top">Наверх</a>
+    <a class="back-to-top" href="#top" aria-label="Вернуться наверх" title="Наверх" hidden>
+      <span aria-hidden="true">↑</span>
+    </a>
   </body>
 </html>

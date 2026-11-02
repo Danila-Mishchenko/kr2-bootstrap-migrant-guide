@@ -45,45 +45,97 @@
       </div>
     </header>
     <main id="main" tabindex="-1">
-      <section class="container section section-hero">
-        <div class="row align-items-center g-4">
-          <div class="col-lg-7">
-            <p class="breadcrumbs">
-              <a href="index.html">Главная</a>
-              / Семья и дети
-            </p>
-            <h1>Семья и дети</h1>
-            <p class="hero__text">Проживание с семьёй и документы для детей.</p>
-            <p>
-              Выберите свою ситуацию. На странице анкеты можно ответить на вопросы и получить
-              предварительный список документов.
-            </p>
-          </div>
-          <div class="col-lg-5">
-            <img
-              class="section-hero__image"
-              src="images/family.png"
-              alt="Семья с ребёнком на консультации по документам"
-              width="520"
-              height="350"
-            />
-          </div>
+      <section class="container page-intro">
+        <p class="breadcrumbs">
+          <a href="index.html">Главная</a>
+          / Семья и дети
+        </p>
+        <h1>Документы для вашей семьи</h1>
+        <p class="hero__text">Выберите, кому нужна помощь: взрослому или ребёнку.</p>
+        <div class="family-switch">
+          <a href="#adults">Для взрослых</a>
+          <a href="#children">Для детей</a>
         </div>
       </section>
-      <section class="container section" aria-labelledby="cards-title">
-        <h2 id="cards-title">Выберите ситуацию</h2>
-        <div class="row g-3" id="cards-family"></div>
-        <noscript><p>Для отображения карточек включите JavaScript.</p></noscript>
-      </section>
+      <div class="container section family-layout">
+        <section class="family-zone family-zone--adults" id="adults" aria-labelledby="adults-title">
+          <p class="page-label">Для взрослых</p>
+          <h2 id="adults-title">Проживание с семьёй</h2>
+          <p>
+            Уточните родство и статус родственника в России. Анкета поможет подготовить исходные
+            документы для проверки семейного основания.
+          </p>
+          <a class="btn btn-light" href="questionnaire.html?card=family-stay" data-questionnaire>
+            Проверить семейное основание
+          </a>
+          <img
+            src="images/family.png"
+            alt="Семья с ребёнком на консультации"
+            width="600"
+            height="400"
+            loading="lazy"
+          />
+        </section>
+        <section
+          class="family-zone family-zone--children"
+          id="children"
+          aria-labelledby="children-title"
+        >
+          <p class="page-label">Для детей</p>
+          <h2 id="children-title">Помощь с документами ребёнка</h2>
+          <article class="family-child">
+            <h3>Документы для ребёнка</h3>
+            <p>
+              Укажите возраст, гражданство и цель обращения: пребывание, проживание или обучение.
+            </p>
+            <a class="btn btn-primary" href="questionnaire.html?card=child" data-questionnaire>
+              Подобрать документы
+            </a>
+          </article>
+          <article class="family-child">
+            <h3>Устройство на учёбу</h3>
+            <p>Выберите детский сад, школу или колледж и укажите сведения о предыдущем обучении.</p>
+            <a
+              class="btn btn-outline-primary"
+              href="questionnaire.html?card=child-study"
+              data-questionnaire
+            >
+              Документы для учёбы
+            </a>
+          </article>
+        </section>
+      </div>
     </main>
     <footer class="site-footer">
       <div class="container">
-        <p>Не является официальным государственным сервисом.</p>
-        <p class="site-footer__name">Справка для Иностранцев</p>
-        <p>+7(123)456-78-90</p>
-        <p>г Москва ул Пушкина д 19</p>
+        <div class="site-footer__grid">
+          <div>
+            <a class="site-footer__brand" href="index.html">
+              <img class="site-footer__logo" src="images/logo.png" width="48" height="48" alt="" />
+              <span>Справка для Иностранцев</span>
+            </a>
+            <p class="site-footer__description">
+              Помогаем разобраться в документах для жизни, работы и учёбы в России.
+            </p>
+          </div>
+          <div>
+            <h2 class="site-footer__title">Контакты</h2>
+            <p>+7(123)456-78-90</p>
+            <p>г Москва ул Пушкина д 19</p>
+            <p><a href="index.html#appointment">Запись на приём</a></p>
+          </div>
+          <div>
+            <h2 class="site-footer__title">Разработчик</h2>
+            <p>Мищенко Данила Михайлович</p>
+          </div>
+        </div>
+        <div class="site-footer__bottom">
+          <p>Не является официальным государственным сервисом.</p>
+        </div>
       </div>
     </footer>
-    <a class="back-to-top btn btn-primary" href="#top">Наверх</a>
+    <a class="back-to-top" href="#top" aria-label="Вернуться наверх" title="Наверх" hidden>
+      <span aria-hidden="true">↑</span>
+    </a>
   </body>
 </html>

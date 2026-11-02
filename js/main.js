@@ -17,26 +17,6 @@ function escapeHtml(value) {
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#39;');
 }
-// Карточки
-for (const group of guide.groups) {
-  const container = document.getElementById('cards-' + group.id);
-  if (!container) continue;
-  let html = '';
-  for (const card of group.cards) {
-    html += `
-      <div class="col-12 col-md-6 col-lg-4">
-        <article class="card guide-card">
-          <div class="card-body">
-            <h3 class="guide-card__title">${escapeHtml(card.title)}</h3>
-            <p class="guide-card__description">${escapeHtml(card.text)}</p>
-            <a class="btn btn-outline-primary" href="questionnaire.html?card=${card.id}">Открыть анкету</a>
-          </div>
-        </article>
-      </div>`;
-  }
-  container.innerHTML = html;
-}
-
 if (panel) {
   const cardId = new URLSearchParams(window.location.search).get('card');
   let currentGroup;
@@ -159,3 +139,27 @@ if (helpButton) {
     document.getElementById('help-dialog').showModal();
   });
 }
+
+// Темы проживания
+const residenceMenu = document.querySelector('.residence-menu');
+if (residenceMenu) {
+  residenceMenu.addEventListener('click', function (event) {
+    const button = event.target.closest('[data-topic]');
+    if (!button) return;
+    for (const item of residenceMenu.querySelectorAll('button')) {
+      item.setAttribute('aria-pressed', String(item === button));
+    }
+    for (const topic of document.querySelectorAll('.residence-panel')) {
+      topic.hidden = topic.id !== 'topic-' + button.dataset.topic;
+    }
+  });
+}
+
+// Кнопка наверх
+const backToTop = document.querySelector('.back-to-top');
+function toggleBackToTop() {
+  if (backToTop) backToTop.hidden = window.scrollY < 400;
+}
+window.addEventListener('scroll', toggleBackToTop, { passive: true });
+window.addEventListener('pageshow', toggleBackToTop);
+toggleBackToTop();

@@ -47,45 +47,99 @@
       </div>
     </header>
     <main id="main" tabindex="-1">
-      <section class="container section section-hero">
-        <div class="row align-items-center g-4">
-          <div class="col-lg-7">
-            <p class="breadcrumbs">
-              <a href="index.html">Главная</a>
-              / Работа
-            </p>
-            <h1>Документы для работы</h1>
-            <p class="hero__text">Трудоустройство с учётом гражданства, проживания и обучения.</p>
-            <p>
-              Выберите свою ситуацию. На странице анкеты можно ответить на вопросы и получить
-              предварительный список документов.
-            </p>
-          </div>
-          <div class="col-lg-5">
-            <img
-              class="section-hero__image"
-              src="images/work.png"
-              alt="Строитель обсуждает документы с консультантом"
-              width="520"
-              height="350"
-            />
-          </div>
+      <section class="container work-cover">
+        <p class="breadcrumbs">
+          <a href="index.html">Главная</a>
+          / Работа
+        </p>
+        <img
+          class="work-cover__image"
+          src="images/work.png"
+          alt="Работник на консультации по документам"
+          width="1400"
+          height="500"
+        />
+        <div class="work-cover__title">
+          <p class="page-label">Документы для работы</p>
+          <h1>Как вы планируете работать?</h1>
+          <p>Выберите вариант, который ближе к вашей ситуации.</p>
         </div>
       </section>
-      <section class="container section" aria-labelledby="cards-title">
-        <h2 id="cards-title">Выберите ситуацию</h2>
-        <div class="row g-3" id="cards-work"></div>
-        <noscript><p>Для отображения карточек включите JavaScript.</p></noscript>
+      <section class="container section work-options" aria-label="Варианты трудоустройства">
+        <article class="work-option">
+          <p class="work-option__number">01</p>
+          <div class="work-option__text">
+            <p class="page-label">Трудоустройство</p>
+            <h2>Хочу устроиться на работу</h2>
+            <p>
+              Для тех, кто нашёл работодателя или хочет разобраться, какие документы понадобятся при
+              трудоустройстве.
+            </p>
+          </div>
+          <a class="btn btn-primary" href="questionnaire.html?card=employment" data-questionnaire>
+            Проверить документы
+          </a>
+        </article>
+        <article class="work-option">
+          <p class="work-option__number">02</p>
+          <div class="work-option__text">
+            <p class="page-label">Патент на работу</p>
+            <h2>Хочу разобраться с патентом</h2>
+            <p>
+              Для тех, кому нужно проверить применимость патентного маршрута и подготовить документы
+              для обращения.
+            </p>
+          </div>
+          <a class="btn btn-primary" href="questionnaire.html?card=patent" data-questionnaire>
+            Проверить документы
+          </a>
+        </article>
+        <article class="work-option">
+          <p class="work-option__number">03</p>
+          <div class="work-option__text">
+            <p class="page-label">Работа во время учёбы</p>
+            <h2>Хочу совмещать работу с учёбой</h2>
+            <p>
+              Для иностранных студентов: форма обучения, программа и другие ответы помогают
+              определить подходящий маршрут.
+            </p>
+          </div>
+          <a class="btn btn-primary" href="questionnaire.html?card=student-work" data-questionnaire>
+            Проверить документы
+          </a>
+        </article>
       </section>
     </main>
     <footer class="site-footer">
       <div class="container">
-        <p>Не является официальным государственным сервисом.</p>
-        <p class="site-footer__name">Справка для Иностранцев</p>
-        <p>+7(123)456-78-90</p>
-        <p>г Москва ул Пушкина д 19</p>
+        <div class="site-footer__grid">
+          <div>
+            <a class="site-footer__brand" href="index.html">
+              <img class="site-footer__logo" src="images/logo.png" width="48" height="48" alt="" />
+              <span>Справка для Иностранцев</span>
+            </a>
+            <p class="site-footer__description">
+              Помогаем разобраться в документах для жизни, работы и учёбы в России.
+            </p>
+          </div>
+          <div>
+            <h2 class="site-footer__title">Контакты</h2>
+            <p>+7(123)456-78-90</p>
+            <p>г Москва ул Пушкина д 19</p>
+            <p><a href="index.html#appointment">Запись на приём</a></p>
+          </div>
+          <div>
+            <h2 class="site-footer__title">Разработчик</h2>
+            <p>Мищенко Данила Михайлович</p>
+          </div>
+        </div>
+        <div class="site-footer__bottom">
+          <p>Не является официальным государственным сервисом.</p>
+        </div>
       </div>
     </footer>
-    <a class="back-to-top btn btn-primary" href="#top">Наверх</a>
+    <a class="back-to-top" href="#top" aria-label="Вернуться наверх" title="Наверх" hidden>
+      <span aria-hidden="true">↑</span>
+    </a>
   </body>
 </html>
