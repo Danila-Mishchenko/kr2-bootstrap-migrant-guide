@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Анкета. Помощь иностранным гражданам в подготовке документов для проживания, работы и учёбы."
+    />
+    <title>Анкета — Справка для Иностранцев</title>
+    <link rel="icon" href="images/logo.png" type="image/png" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script defer src="js/data.js"></script>
+    <script defer src="js/rules.js"></script>
+    <script defer src="js/main.js"></script>
+  </head>
+  <body id="top">
+    <a class="skip-link" href="#main">Перейти к содержимому</a>
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a class="site-header__brand" href="index.html">
+          <img class="site-header__logo" src="images/logo.png" width="48" height="48" alt="" />
+          <span>Справка для Иностранцев</span>
+        </a>
+        <nav class="site-nav" aria-label="Основная навигация">
+          <ul class="site-nav__list">
+            <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+            <li class="site-nav__item">
+              <a class="site-nav__link" href="residence.html">Проживание</a>
+            </li>
+            <li class="site-nav__item"><a class="site-nav__link" href="work.html">Работа</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="study.html">Учёба</a></li>
+            <li class="site-nav__item">
+              <a class="site-nav__link" href="registration.html">Миграционный учёт</a>
+            </li>
+            <li class="site-nav__item">
+              <a class="site-nav__link" href="family.html">Семья и дети</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main id="main" tabindex="-1">
+      <div class="container section questionnaire-page">
+        <section
+          class="questionnaire"
+          id="questionnaire"
+          aria-labelledby="questionnaire-title"
+          hidden
+        >
+          <div class="questionnaire__header">
+            <h1 id="questionnaire-title" tabindex="-1"></h1>
+            <a class="btn btn-outline-secondary" id="back-to-section" href="index.html">
+              Назад в раздел
+            </a>
+          </div>
+          <form id="guide-form">
+            <fieldset class="questionnaire__fields">
+              <legend>Ответьте на вопросы</legend>
+              <div class="row g-3" id="questions"></div>
+            </fieldset>
+            <fieldset class="document-list">
+              <legend>Какие документы уже есть?</legend>
+              <p id="documents-hint">Сначала ответьте на все вопросы.</p>
+              <div id="document-choices"></div>
+            </fieldset>
+            <button class="btn btn-primary button" id="answer-button" type="submit" disabled>
+              Ответ
+            </button>
+          </form>
+          <div class="result" id="result" hidden>
+            <h2 id="result-title" tabindex="-1">Для оформления вам нужно</h2>
+            <p id="result-count"></p>
+            <div class="alert alert-warning" id="result-notes"></div>
+            <div id="result-documents"></div>
+          </div>
+        </section>
+        <section id="not-found" hidden>
+          <h1>Анкета не найдена</h1>
+          <p>Откройте раздел и выберите нужную карточку.</p>
+          <a class="btn btn-primary" href="index.html">На главную</a>
+        </section>
+      </div>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <p>Не является официальным государственным сервисом.</p>
+        <p class="site-footer__name">Справка для Иностранцев</p>
+        <p>+7(123)456-78-90</p>
+        <p>г Москва ул Пушкина д 19</p>
+      </div>
+    </footer>
+    <a class="back-to-top btn btn-primary" href="#top">Наверх</a>
+  </body>
+</html>

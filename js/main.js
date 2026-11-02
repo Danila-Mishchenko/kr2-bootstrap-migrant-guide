@@ -6,9 +6,7 @@ const questionsBox = document.getElementById('questions');
 const documentsBox = document.getElementById('document-choices');
 const result = document.getElementById('result');
 const answerButton = document.getElementById('answer-button');
-const savedForms = {};
 let currentCard;
-let currentButton;
 let answers = {};
 let owned = {};
 function escapeHtml(value) {
@@ -21,6 +19,8 @@ function escapeHtml(value) {
 }
 // Карточки
 for (const group of guide.groups) {
+  const container = document.getElementById('cards-' + group.id);
+  if (!container) continue;
   let html = '';
   for (const card of group.cards) {
     html += `
@@ -29,53 +29,37 @@ for (const group of guide.groups) {
           <div class="card-body">
             <h3 class="guide-card__title">${escapeHtml(card.title)}</h3>
             <p class="guide-card__description">${escapeHtml(card.text)}</p>
-            <button class="btn btn-outline-primary" type="button" data-card="${card.id}"
-              aria-controls="questionnaire" aria-expanded="false"
-              aria-label="Открыть анкету: ${escapeHtml(card.title)}">Открыть анкету</button>
+            <a class="btn btn-outline-primary" href="questionnaire.html?card=${card.id}">Открыть анкету</a>
           </div>
         </article>
       </div>`;
   }
-  document.getElementById('cards-' + group.id).innerHTML = html;
+  container.innerHTML = html;
 }
 
-function saveAnswers() {
-  if (currentCard) savedForms[currentCard.id] = { answers, owned };
-}
-
-function closeQuestionnaire() {
-  saveAnswers();
-  panel.hidden = true;
-  if (currentButton) {
-    currentButton.setAttribute('aria-expanded', 'false');
-    currentButton.closest('.guide-card').classList.remove('guide-card--active');
-    currentButton.focus();
-  }
-}
-
-document.querySelector('main').addEventListener('click', function (event) {
-  const button = event.target.closest('[data-card]');
-  if (!button) return;
-  closeQuestionnaire();
+if (panel) {
+  const cardId = new URLSearchParams(window.location.search).get('card');
+  let currentGroup;
   for (const group of guide.groups) {
     const card = group.cards.find(function (item) {
-      return item.id === button.dataset.card;
+      return item.id === cardId;
     });
-    if (card) currentCard = card;
+    if (card) {
+      currentCard = card;
+      currentGroup = group;
+      break;
+    }
   }
-  const saved = savedForms[currentCard.id] || { answers: {}, owned: {} };
-  answers = saved.answers;
-  owned = saved.owned;
-  currentButton = button;
-  button.setAttribute('aria-expanded', 'true');
-  button.closest('.guide-card').classList.add('guide-card--active');
-  button.closest('section').append(panel);
-  panel.hidden = false;
-  document.getElementById('questionnaire-title').textContent = currentCard.title;
-  renderQuestions();
-  document.getElementById('questionnaire-title').focus({ preventScroll: true });
-  panel.scrollIntoView();
-});
+  if (currentCard) {
+    document.getElementById('questionnaire-title').textContent = currentCard.title;
+    document.title = currentCard.title + ' — Справка для Иностранцев';
+    document.getElementById('back-to-section').href = currentGroup.id + '.html';
+    panel.hidden = false;
+    renderQuestions();
+  } else {
+    document.getElementById('not-found').hidden = false;
+  }
+}
 
 // Анкета
 function renderQuestions() {
@@ -126,53 +110,52 @@ function renderDocuments(complete) {
   documentsBox.innerHTML = html;
 }
 
-form.addEventListener('change', function (event) {
-  const field = event.target;
-  if (field.dataset.document) {
-    owned[field.dataset.document] = field.value === 'yes';
-    result.hidden = true;
-  } else if (field.name) {
-    answers[field.name] = field.value;
-    renderQuestions();
-    document.getElementById(field.id).focus({ preventScroll: true });
-  }
-  saveAnswers();
-});
+if (form)
+  form.addEventListener('change', function (event) {
+    const field = event.target;
+    if (field.dataset.document) {
+      owned[field.dataset.document] = field.value === 'yes';
+      result.hidden = true;
+    } else if (field.name) {
+      answers[field.name] = field.value;
+      renderQuestions();
+      document.getElementById(field.id).focus({ preventScroll: true });
+    }
+  });
 
 // Ответ
-form.addEventListener('submit', function (event) {
-  event.preventDefault();
-  if (answerButton.disabled || !form.reportValidity()) return;
-  const selected = guide.plan(currentCard.id, answers);
-  let html = '';
-  let ready = 0;
-  for (const id of selected.ids) {
-    const document = guide.documents[id];
-    const status = owned[id] ? 'Уже есть' : 'Подготовить / уточнить применимость';
-    if (owned[id]) ready++;
-    html += `<div class="result__item${owned[id] ? ' result__item--ready' : ''}">
+if (form)
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    if (answerButton.disabled || !form.reportValidity()) return;
+    const selected = guide.plan(currentCard.id, answers);
+    let html = '';
+    let ready = 0;
+    for (const id of selected.ids) {
+      const document = guide.documents[id];
+      const status = owned[id] ? 'Уже есть' : 'Подготовить / уточнить применимость';
+      if (owned[id]) ready++;
+      html += `<div class="result__item${owned[id] ? ' result__item--ready' : ''}">
       <h5>${escapeHtml(document[0])}</h5>
       <p class="result__state">${status}</p>
       <p>${escapeHtml(document[1])}</p></div>`;
-  }
-  document.getElementById('result-documents').innerHTML = html;
-  document.getElementById('result-count').textContent =
-    `Уже есть: ${ready} из ${selected.ids.length}. Осталось подготовить или уточнить: ${selected.ids.length - ready}.`;
-  document.getElementById('result-notes').innerHTML = selected.notes
-    .map(function (note) {
-      return '<p>' + escapeHtml(note) + '</p>';
-    })
-    .join('');
-  result.hidden = false;
-  document.getElementById('result-title').focus({ preventScroll: true });
-  result.scrollIntoView();
-  saveAnswers();
-});
+    }
+    document.getElementById('result-documents').innerHTML = html;
+    document.getElementById('result-count').textContent =
+      `Уже есть: ${ready} из ${selected.ids.length}. Осталось подготовить или уточнить: ${selected.ids.length - ready}.`;
+    document.getElementById('result-notes').innerHTML = selected.notes
+      .map(function (note) {
+        return '<p>' + escapeHtml(note) + '</p>';
+      })
+      .join('');
+    result.hidden = false;
+    document.getElementById('result-title').focus({ preventScroll: true });
+    result.scrollIntoView();
+  });
 
-document.getElementById('close-questionnaire').addEventListener('click', closeQuestionnaire);
-panel.addEventListener('keydown', function (event) {
-  if (event.key === 'Escape') closeQuestionnaire();
-});
-document.getElementById('open-help').addEventListener('click', function () {
-  document.getElementById('help-dialog').showModal();
-});
+const helpButton = document.getElementById('open-help');
+if (helpButton) {
+  helpButton.addEventListener('click', function () {
+    document.getElementById('help-dialog').showModal();
+  });
+}
