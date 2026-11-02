@@ -302,6 +302,13 @@ legend {
   text-decoration: none;
   box-shadow: 0 4px 16px #192b4326;
 }
+.back-to-top__icon {
+  width: 12px;
+  height: 12px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  transform: translateY(3px) rotate(-45deg);
+}
 .back-to-top:active {
   transform: translateY(1px);
 }
