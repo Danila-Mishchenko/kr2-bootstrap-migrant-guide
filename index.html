@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Справка для иностранцев о документах для проживания, работы, учёбы и миграционного учёта в России."
+    />
+    <title>Справка для Иностранцев</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script defer src="js/data.js"></script>
+    <script defer src="js/rules.js"></script>
+    <script defer src="js/main.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Перейти к содержимому</a>
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a class="site-header__brand" href="#home">Справка для Иностранцев</a>
+        <nav class="site-nav" aria-label="Основная навигация">
+          <ul class="site-nav__list">
+            <li class="site-nav__item"><a class="site-nav__link" href="#home">Главная</a></li>
+            <li class="site-nav__item">
+              <a class="site-nav__link" href="#residence">Проживание</a>
+            </li>
+            <li class="site-nav__item"><a class="site-nav__link" href="#work">Работа</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="#study">Учёба</a></li>
+            <li class="site-nav__item">
+              <a class="site-nav__link" href="#registration">Миграционный учёт</a>
+            </li>
+            <li class="site-nav__item">
+              <a class="site-nav__link" href="#family">Семья и дети</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section class="container hero" id="home">
+        <h1>Документы для жизни и работы в России</h1>
+        <p class="hero__text">
+          Справочник для иностранных граждан, которые живут, работают или учатся в России.
+        </p>
+        <p>
+          Выберите карточку, ответьте на вопросы и укажите, какие документы уже есть. Нажмите
+          'Ответ', чтобы увидеть список.
+        </p>
+        <a class="btn btn-primary button" href="#residence">Выбрать ситуацию</a>
+        <button class="btn btn-outline-primary button" id="open-help" type="button">
+          Как это работает
+        </button>
+        <p class="alert alert-info mt-4">
+          Перечни ориентировочные. Точный состав документов зависит от основания обращения, региона
+          и действующих требований.
+        </p>
+      </section>
+
+      <noscript><p class="container">Для работы анкет включите JavaScript.</p></noscript>
+      <section class="container section" id="residence">
+        <h2>Проживание в России</h2>
+        <p class="section__description">Пребывание, РВП, ВНЖ и ежегодное уведомление.</p>
+        <div class="row g-3" id="cards-residence"></div>
+      </section>
+      <section class="container section" id="work">
+        <h2>Документы для работы</h2>
+        <p class="section__description">
+          Трудоустройство с учётом гражданства, проживания и обучения.
+        </p>
+        <div class="row g-3" id="cards-work"></div>
+      </section>
+      <section class="container section" id="study">
+        <h2>Учёба в России</h2>
+        <p class="section__description">Поступление, РВПО и подтверждение обучения.</p>
+        <div class="row g-3" id="cards-study"></div>
+      </section>
+      <section class="container section" id="registration">
+        <h2>Миграционный учёт и переезд</h2>
+        <p class="section__description">Учёт по адресу, смена места проживания и общежитие.</p>
+        <div class="row g-3" id="cards-registration"></div>
+      </section>
+      <section class="container section" id="family">
+        <h2>Семья и дети</h2>
+        <p class="section__description">Проживание с семьёй и документы для детей.</p>
+        <div class="row g-3" id="cards-family"></div>
+      </section>
+
+      <!-- Анкета -->
+      <section
+        class="questionnaire"
+        id="questionnaire"
+        aria-labelledby="questionnaire-title"
+        hidden
+      >
+        <div class="questionnaire__header">
+          <h3 id="questionnaire-title" tabindex="-1"></h3>
+          <button class="btn btn-outline-secondary" id="close-questionnaire" type="button">
+            Закрыть анкету
+          </button>
+        </div>
+        <form id="guide-form">
+          <fieldset class="questionnaire__fields">
+            <legend>Ответьте на вопросы</legend>
+            <div class="row g-3" id="questions"></div>
+          </fieldset>
+          <fieldset class="document-list">
+            <legend>Какие документы уже есть?</legend>
+            <p id="documents-hint">Сначала ответьте на все вопросы.</p>
+            <div id="document-choices"></div>
+          </fieldset>
+          <button class="btn btn-primary button" id="answer-button" type="submit" disabled>
+            Ответ
+          </button>
+        </form>
+        <div class="result" id="result" hidden>
+          <h4 id="result-title" tabindex="-1">Для оформления вам нужно</h4>
+          <p id="result-count"></p>
+          <div class="alert alert-warning" id="result-notes"></div>
+          <div id="result-documents"></div>
+        </div>
+      </section>
+
+      <section class="container section faq">
+        <h2>Частые вопросы</h2>
+        <details>
+          <summary>Это подача заявления?</summary>
+          <p>
+            Нет. Сайт помогает составить предварительный список. Заявления и документы не
+            отправляются.
+          </p>
+        </details>
+        <details>
+          <summary>Сохраняются ли ответы?</summary>
+          <p>
+            Черновики анкет хранятся в памяти открытой страницы. После обновления страницы они
+            исчезнут.
+          </p>
+        </details>
+        <details>
+          <summary>Все документы есть. Можно подавать?</summary>
+          <p>
+            Перед подачей уточните требования и действительность документов в принимающей
+            организации.
+          </p>
+        </details>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container"><p>Не является официальным государственным сервисом.</p></div>
+    </footer>
+    <a class="back-to-top btn btn-primary" href="#home">Наверх</a>
+
+    <dialog class="help-dialog" id="help-dialog" aria-labelledby="help-title">
+      <h2 id="help-title">Как пользоваться справочником</h2>
+      <p>
+        Откройте карточку. Ответьте на вопросы. Напротив каждого документа выберите 'Есть' или
+        'Нет'. Нажмите 'Ответ'.
+      </p>
+      <p>
+        В результате отобразятся текстовые статусы. Если измените ответы или наличие документов,
+        нажмите 'Ответ' снова.
+      </p>
+      <form method="dialog"><button class="btn btn-primary" type="submit">Закрыть</button></form>
+    </dialog>
+  </body>
+</html>
