@@ -42,7 +42,7 @@ h2 {
 a {
   color: var(--color-primary);
 }
-:where(a, button, select, summary):focus-visible {
+:where(a, button, input, select, summary):focus-visible {
   outline: 3px solid #ad4500 !important;
   outline-offset: 4px;
 }
@@ -231,6 +231,19 @@ legend {
   margin-top: 24px;
   padding-top: 24px;
   border-top: 1px solid var(--color-border);
+}
+.result__progress {
+  display: block;
+  width: 100%;
+  height: 1rem;
+  margin-bottom: 1rem;
+  accent-color: var(--color-primary);
+}
+.result__missing {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border: 1px solid #ccd9e8;
+  border-radius: var(--radius);
 }
 .result__item {
   padding: 16px 0;

@@ -58,6 +58,14 @@
               Назад в раздел
             </a>
           </div>
+          <div class="mb-3" id="draft-actions" hidden>
+            <button class="btn btn-outline-primary" id="resume-draft" type="button">
+              Продолжить анкету
+            </button>
+            <button class="btn btn-outline-secondary" id="reset-draft" type="button">
+              Начать заново
+            </button>
+          </div>
           <form id="guide-form">
             <fieldset class="questionnaire__fields">
               <legend>Ответьте на вопросы</legend>
@@ -74,7 +82,21 @@
           </form>
           <div class="result" id="result" hidden>
             <h2 id="result-title" tabindex="-1">Для оформления вам нужно</h2>
-            <p id="result-count"></p>
+            <p id="result-count" role="status"></p>
+            <progress
+              class="result__progress"
+              id="result-progress"
+              aria-label="Прогресс сбора документов"
+            ></progress>
+            <section class="result__missing" aria-labelledby="missing-title">
+              <h3 id="missing-title">Что ещё нужно подготовить или уточнить</h3>
+              <ul id="missing-documents"></ul>
+              <p id="missing-empty" hidden>Все документы из списка отмечены как готовые.</p>
+              <button class="btn btn-outline-primary" id="copy-missing" type="button">
+                Скопировать список
+              </button>
+              <p class="mb-0" id="copy-status" role="status"></p>
+            </section>
             <div class="alert alert-warning" id="result-notes"></div>
             <div id="result-documents"></div>
           </div>
